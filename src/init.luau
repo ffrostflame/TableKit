@@ -491,4 +491,27 @@ function TableKit.IsEmpty(mysteryTable: { [unknown]: unknown }): boolean
 	return next(mysteryTable) == nil
 end
 
+--[=[
+	Reverses an array.
+	
+	```lua
+	local TableToReverse = {"Apples", "Bananas", "Oranges", "Mangoes"}
+	
+	print(TableKit.Reverse(TableToReverse)) -- prints {"Mangoes", "Oranges", "Bananas", "Apples"}
+	```
+
+	@within TableKit
+	@param arr { [number]: T }
+	@return { [number]: T }
+]=]
+function TableKit.Reverse<T>(arr: { [number]: T }): { [number]: T }
+	local tbl = {}
+
+	for index, value in arr do
+		table.insert(tbl, #arr - index + 1, value)
+	end
+	
+	return tbl
+end
+
 return table.freeze(TableKit)
